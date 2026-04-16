@@ -7,7 +7,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
@@ -15,7 +14,7 @@ class GiftCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public Gift $gift)
+    public function __construct(protected Gift $gift)
     {
     }
 
@@ -40,7 +39,9 @@ class GiftCreated extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromPath(public_path('images/bellahu123-gift-4663231.jpg')),
+            Attachment::fromPath(public_path('images/bellahu123-gift-4663231.jpg'))
+                ->as('gift.jpg')
+                ->withMime('image/jpeg'),
         ];
     }
 }
