@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des cadeaux</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Liste des cadeaux')
+
+@section('content')
     <h1>Liste des cadeaux</h1>
 
     <p><a href="{{ route('gifts.create') }}">Ajouter un cadeau</a></p>
@@ -27,5 +25,4 @@
             @endforeach
         </ul>
     @endif
-</body>
-</html>
+@endsection

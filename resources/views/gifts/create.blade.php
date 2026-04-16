@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Nouveau cadeau</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Nouveau cadeau')
+
+@section('content')
     <p><a href="{{ route('gifts.index') }}">← Retour à la liste</a></p>
 
     <h1>Nouveau cadeau</h1>
@@ -22,7 +20,7 @@
 
         <p>
             <label for="url">URL</label><br>
-            <input type="url" id="url" name="url" value="{{ old('url') }}" pattern="https?://.*" required>
+            <input type="url" id="url" name="url" value="{{ old('url') }}">
             @error('url')
                 <p style="color:red">{{ $message }}</p>
             @enderror
@@ -48,5 +46,4 @@
             <button type="submit">Créer</button>
         </p>
     </form>
-</body>
-</html>
+@endsection

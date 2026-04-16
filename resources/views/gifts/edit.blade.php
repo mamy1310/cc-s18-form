@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Modifier {{ $gift->name }}</title>
-</head>
+@section('title', 'Modifier ' . $gift->name)
 
-<body>
+@section('content')
     <p><a href="{{ route('gifts.show', $gift) }}">← Retour au cadeau</a></p>
 
     <h1>Modifier le cadeau</h1>
@@ -20,25 +16,24 @@
             <input type="text" id="name" name="name" value="{{ old('name', $gift->name) }}" minlength="3"
                 maxlength="51" required>
             @error('name')
-            <p style="color:red">{{ $message }}</p>
-        @enderror
+                <p style="color:red">{{ $message }}</p>
+            @enderror
         </p>
 
         <p>
             <label for="url">URL</label><br>
-            <input type="url" id="url" name="url" value="{{ old('url', $gift->url) }}"
-                pattern="https?://.*" required>
+            <input type="url" id="url" name="url" value="{{ old('url', $gift->url) }}">
             @error('url')
-            <p style="color:red">{{ $message }}</p>
-        @enderror
+                <p style="color:red">{{ $message }}</p>
+            @enderror
         </p>
 
         <p>
             <label for="details">Détails</label><br>
             <textarea id="details" name="details" rows="4">{{ old('details', $gift->details) }}</textarea>
             @error('details')
-            <p style="color:red">{{ $message }}</p>
-        @enderror
+                <p style="color:red">{{ $message }}</p>
+            @enderror
         </p>
 
         <p>
@@ -46,14 +41,12 @@
             <input type="number" id="price" name="price" value="{{ old('price', $gift->price) }}" step="0.01"
                 min="0" required>
             @error('price')
-            <p style="color:red">{{ $message }}</p>
-        @enderror
+                <p style="color:red">{{ $message }}</p>
+            @enderror
         </p>
 
         <p>
             <button type="submit">Enregistrer</button>
         </p>
     </form>
-</body>
-
-</html>
+@endsection

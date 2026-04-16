@@ -23,7 +23,7 @@ class GiftController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:50'],
-            'url' => ['required', 'string', 'regex:/^https?:\/\//'],
+            'url' => ['nullable', 'url:http,https'],
             'details' => ['nullable', 'string'],
             'price' => ['required', 'numeric', 'decimal:0,2'],
         ]);
@@ -47,7 +47,7 @@ class GiftController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:50'],
-            'url' => ['required', 'string', 'regex:/^https?:\/\//'],
+            'url' => ['nullable', 'url:http,https'],
             'details' => ['nullable', 'string'],
             'price' => ['required', 'numeric', 'decimal:0,2'],
         ]);
