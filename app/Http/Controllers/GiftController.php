@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\GiftCreated;
 use App\Models\Gift;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class GiftController extends Controller
 {
@@ -28,7 +30,9 @@ class GiftController extends Controller
             'price' => ['required', 'numeric', 'decimal:0,2'],
         ]);
 
-        Gift::create($data);
+        $gift = Gift::create($data);
+
+        Mail::to('mamitiana.itu@gmail.com')->send(new GiftCreated($gift));
 
         return redirect()->route('gifts.index');
     }
