@@ -1,1 +1,1 @@
-<p>Le cadeau {{ $gift->name }} a bien été ajouté ({{ $gift->price }}€)</p>
+<p>Le cadeau {{ $name }} a bien été ajouté ({{ $price }}€)</p>
